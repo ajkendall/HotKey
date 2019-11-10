@@ -23,7 +23,7 @@ public struct KeyCombo: Equatable {
 		}
 
 		set {
-			carbonModifiers = modifiers.carbonFlags
+			carbonModifiers = newValue.carbonFlags
 		}
 	}
 
@@ -50,24 +50,24 @@ public struct KeyCombo: Equatable {
 	}
 }
 
-extension KeyCombo {
-	public var dictionary: [String: Any] {
-		return [
-			"keyCode": Int(carbonKeyCode),
-			"modifiers": Int(carbonModifiers)
-		]
-	}
-
-	public init?(dictionary: [String: Any]) {
-		guard let keyCode = dictionary["keyCode"] as? Int,
-			let modifiers = dictionary["modifiers"] as? Int
-		else {
-			return nil
-		}
-
-		self.init(carbonKeyCode: UInt32(keyCode), carbonModifiers: UInt32(modifiers))
-	}
-}
+//extension KeyCombo {
+//	public var dictionary: [String: Any] {
+//		return [
+//			"keyCode": Int(carbonKeyCode),
+//			"modifiers": Int(carbonModifiers)
+//		]
+//	}
+//
+//	public init?(dictionary: [String: Any]) {
+//		guard let keyCode = dictionary["keyCode"] as? Int,
+//			let modifiers = dictionary["modifiers"] as? Int
+//		else {
+//			return nil
+//		}
+//
+//		self.init(carbonKeyCode: UInt32(keyCode), carbonModifiers: UInt32(modifiers))
+//	}
+//}
 
 extension KeyCombo: CustomStringConvertible {
     public var description: String {
